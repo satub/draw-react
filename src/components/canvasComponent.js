@@ -14,9 +14,9 @@ export default class CanvasComponent extends React.Component {
   handleClick(ev){
     ev.preventDefault();
     this.setState({
-      shapes: [...this.state.shapes, [ev.clientX, ev.clientY]]
+      shapes: [...this.state.shapes, [ev.pageX, ev.pageY-55]]
     })
-    console.log(this.state.shapes);
+    // console.log(this.state.shapes);
   }
 
   render(){
