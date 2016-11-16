@@ -1,6 +1,5 @@
 const path = require('path')
 const express = require('express')
-const socketIO = require('socket.io')
 
 module.exports = {
   app: function () {
@@ -10,12 +9,6 @@ module.exports = {
 
     app.use('/public', publicPath)
     app.get('/', function (_, res) { res.sendFile(indexPath) })
-    var server = require('http').createServer(app);
-    const io = socketIO(server)
-    io.on('connection', (socket) => {
-       console.log('Client connected');
-       socket.on('disconnect', () => console.log('Client disconnected'));
-    }); 
     return app 
     } 
 }
