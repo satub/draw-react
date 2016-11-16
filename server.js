@@ -1,5 +1,9 @@
 const path = require('path')
 const express = require('express')
+var server = require('http').createServer(express);
+var io = require('socket.io')(server);
+io.on('connection', function(){console.log('i connected!!')});
+server.listen(3000);
 
 module.exports = {
   app: function () {
