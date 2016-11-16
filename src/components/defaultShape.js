@@ -6,7 +6,7 @@ export default function DefaultShape(props){
   return (
     <div>
     {ctx.beginPath()}
-    {ctx.arc(props.xCo,props.yCo,40,0,2*Math.PI)}
+    {ctx.arc(props.xCo,props.yCo,10,0,2*Math.PI)}
     {ctx.stroke()}
     </div>
   )
