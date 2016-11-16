@@ -10,13 +10,15 @@ module.exports = {
     app.use('/public', publicPath)
     app.get('/', function (_, res) { res.sendFile(indexPath) })
     app.set('port', process.env.PORT || 3000);
-    var server = require('http').createServer(app);
-    var io = require('socket.io')(server);
-    io.on('connection', (socket) => {
-      console.log('Client connected');
-      socket.on('disconnect', () => console.log('Client disconnected'));
-    });
-    server.listen(app.get('port'))
     return app 
     } 
 }
+
+
+    // var server = require('http').createServer(app);
+    // var io = require('socket.io')(server);
+    // io.on('connection', (socket) => {
+    //   console.log('Client connected');
+    //   socket.on('disconnect', () => console.log('Client disconnected'));
+    // });
+    // server.listen(app.get('port'))
