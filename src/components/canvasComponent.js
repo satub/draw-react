@@ -37,7 +37,7 @@ export default class CanvasComponent extends React.Component {
         drawCoords: [ev.pageX, ev.pageY-55]
       })
     })
-   
+
     // this.setState({
     //   shapes: [...this.state.shapes, [ev.pageX, ev.pageY-55]]
     // })
@@ -48,7 +48,7 @@ export default class CanvasComponent extends React.Component {
     let rendered = this.state.shapes.map((shape, i) => <DefaultShape xCo={shape[0]} yCo={shape[1]} key={i}/>)
     return (
       <div id="painting">
-        <canvas onMouseMove={this.handleClick} id="ourCanvas" width="700" height="400" style={{backgroundColor: '#008811', borderRadius: 10, borderWidth: 0.5, borderColor: '#d6d7da', opacity: '0.75'}}>
+        <canvas onClick={this.handleClick} id="ourCanvas" width="700" height="400" style={{backgroundColor: '#008811', borderRadius: 10, borderWidth: 0.5, borderColor: '#d6d7da', opacity: '0.75'}}>
           {rendered}
         </canvas>
       </div>
