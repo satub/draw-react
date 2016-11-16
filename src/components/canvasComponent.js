@@ -1,6 +1,9 @@
 import React from 'react'
 import DefaultShape from './defaultShape'
+import fetch from 'isomorphic-fetch'
+// import io from 'socket.io'
 ///import other canvas elements as components or stateless functions
+const socket = io();
 
 export default class CanvasComponent extends React.Component {
   constructor(){
@@ -9,13 +12,35 @@ export default class CanvasComponent extends React.Component {
       shapes: []
     }
     this.handleClick = this.handleClick.bind(this)
+    debugger;
+    socket.on('draw event', (newDrawState) => this.handleStateChange(newDrawState));
+  }
+
+  handleStateChange(newDrawState) {
+    debugger;
+    this.setState({
+      shapes: [...this.state.shapes, newDrawState]
+    })
   }
 
   handleClick(ev){
     ev.preventDefault();
-    this.setState({
-      shapes: [...this.state.shapes, [ev.pageX, ev.pageY-55]]
+   // const body = JSON.stringify({a: 1, b: 2})
+
+   fetch('http://localhost:8080/draw', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        drawCoords: [ev.pageX, ev.pageY-55]
+      })
     })
+   
+    // this.setState({
+    //   shapes: [...this.state.shapes, [ev.pageX, ev.pageY-55]]
+    // })
     // console.log(this.state.shapes);
   }
 
