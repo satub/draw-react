@@ -11,7 +11,10 @@ module.exports = {
     app.get('/', function (_, res) { res.sendFile(indexPath) })
     var server = require('http').createServer(app);
     var io = require('socket.io')(server);
-    io.on('connection', function(){console.log('hi!!') });
+    io.on('connection', (socket) => {
+      console.log('Client connected');
+      socket.on('disconnect', () => console.log('Client disconnected'));
+    });
     return app 
     } 
 }
