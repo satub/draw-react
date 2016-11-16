@@ -6,7 +6,6 @@ export default class App extends React.Component {
     return (
       <div>
         <h1>Change me!</h1>
-        What a hot reload!
         <CanvasComponent />
       </div>
     )
