@@ -26,7 +26,8 @@
   "dependencies": {
     "express": "^4.13.4",
     "react": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react-dom": "^0.14.8",
+    "socket.io": "1.5.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",
